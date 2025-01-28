@@ -1,27 +1,26 @@
 import { Tree } from './tree.js';
-import { prettyPrint } from './utils.js';
+import { getRandomArray, prettyPrint } from './helper.js';
 
-const tree = new Tree([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]);
+// const tree = new Tree([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]);
+const tree = new Tree(getRandomArray());
 
-tree.insertIterative(40);
-tree.insert(18);
-tree.insert(15);
-tree.insert(2);
-tree.insert(10);
-tree.insert(5);
-tree.insert(7);
-tree.insert(12);
-tree.insert(20);
 prettyPrint(tree.root);
-// prettyPrint(tree.find(23));
-// // console.log(tree.height(tree.find(23)));
-// console.log(tree.depth(tree.find(15)));
-// console.log(tree.depth(tree.root));
 
-// console.log(tree.isBalanced());
+tree.insert(123);
+tree.insert(234);
+tree.insert(335);
+prettyPrint(tree.root);
 
-console.log(tree.height());
+console.log(tree.isBalanced());
+
 tree.rebalance();
-
 prettyPrint(tree.root);
-console.log(tree.height());
+console.log(tree.isBalanced());
+
+tree.inOrder((node) => console.log(node.data));
+console.log('---------');
+tree.preOrder((node) => console.log(node.data));
+console.log('----------');
+tree.postOrder((node) => console.log(node.data));
+console.log('----------');
+tree.levelOrderRecursive((node) => console.log(node.data));
